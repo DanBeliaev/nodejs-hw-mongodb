@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
 import express from "express";
-=======
-import {Router} from "express";
->>>>>>> Stashed changes
 
 import {
     getContactsController,
@@ -16,15 +12,7 @@ import { validateBody } from "../middlewares/validateBody.js";
 import { createContactSchema, updateContactSchema } from "../validation/contacts.js";
 import { isValidId } from "../middlewares/isValidId.js";
 
-<<<<<<< Updated upstream
-const jsonParser = express.json();
 const router = express.Router();
-=======
-
-const router = Router();
-
-router.use(authenticate);
->>>>>>> Stashed changes
 
 router.get(
     '/contacts',
@@ -36,12 +24,7 @@ router.get(
     ctrlWrapper(getContactByIdController)
 );
 router.post(
-<<<<<<< Updated upstream
     "/contacts",
-    jsonParser,
-=======
-    "/",
->>>>>>> Stashed changes
     validateBody(createContactSchema),
     ctrlWrapper(createContactsController)
 );
