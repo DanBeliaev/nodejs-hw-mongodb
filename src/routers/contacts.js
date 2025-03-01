@@ -1,4 +1,4 @@
-import express from "express";
+import {Router, json} from "express";
 
 import {
     getContactsController,
@@ -11,34 +11,37 @@ import { ctrlWrapper } from "../utils/ctrlWrapper.js";
 import { validateBody } from "../middlewares/validateBody.js";
 import { createContactSchema, updateContactSchema } from "../validation/contacts.js";
 import { isValidId } from "../middlewares/isValidId.js";
+import { authenticate } from "../middlewares/authenticate.js";
 
-const jsonParser = express.json();
-const router = express.Router();
+const jsonParser = json();
+const router = Router();
+
+router.use(authenticate);
 
 router.get(
-    '/contacts',
+    '/',
     ctrlWrapper(getContactsController)
 );
 router.get(
-    '/contacts/:contactId',
+    '/:contactId',
     isValidId,
     ctrlWrapper(getContactByIdController)
 );
 router.post(
-    "/contacts",
+    "/",
     jsonParser,
     validateBody(createContactSchema),
     ctrlWrapper(createContactsController)
 );
 router.patch(
-    "/contacts/:contactId",
+    "/:contactId",
     isValidId,
     jsonParser,
     validateBody(updateContactSchema),
     ctrlWrapper(patchContactController)
 );
 router.delete(
-    "/contacts/:contactId",
+    "/:contactId",
     isValidId,
     ctrlWrapper(deleteContactController)
 );
