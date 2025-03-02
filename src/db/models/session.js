@@ -7,7 +7,7 @@ const sessionSchema = new Schema({
         required: true
     },
     accessToken: {
-        type: String, 
+        type: String,
         required: true
     },
     refreshToken: {
