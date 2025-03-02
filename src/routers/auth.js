@@ -19,7 +19,7 @@ router.post(
 );
 
 router.post(
-    '/login',
+    '/login', 
     validateBody(loginUserSchema),
     ctrlWrapper(loginUserController)
 );

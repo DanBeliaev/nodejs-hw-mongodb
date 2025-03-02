@@ -20,7 +20,7 @@ export const getContactsController = async (req, res) => {
         page,
         perPage,
         sortBy,
-        sortOrder,
+        sortOrder,  
         filter,
         userId: req.user._id
     });
@@ -49,8 +49,8 @@ export const getContactByIdController = async (req, res) => {
 
 export const createContactsController = async (req, res) => {
 
-    const {name, phoneNumber, email, isFavorite, contactType} = req.body;
-    const newContact = await createContact({name, phoneNumber, email, isFavorite, contactType, userId: req.user._id} );
+    const {name, phoneNumber, email, isFavourite, contactType} = req.body;
+    const newContact = await createContact({name, phoneNumber, email, isFavourite, contactType, userId: req.user._id} );
 
     res.status(201).json({
         status: 201,
@@ -65,7 +65,7 @@ export const patchContactController = async (req, res) => {
         name: req.body.name,
         phoneNumber: req.body.phoneNumber,
         email: req.body.email,
-        isFavorite: req.body.isFavorite,
+        isFavourite: req.body.isFavourite,
         contactType: req.body.contactType
     };
 
