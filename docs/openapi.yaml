@@ -13,7 +13,7 @@ tags:
     description: Authentication and password reset operations
 servers:
   - url: http://127.0.0.1:3000
-  - url: https://nodejs-hw-mongodb-by38.onrender.com
+  - url: https://nodejs-hw-mongodb-7-ndcm.onrender.com
 security:
   - bearerAuth: []
 paths:
